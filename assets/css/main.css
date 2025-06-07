@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gray-800 mx-auto px-4 max-w-md text-[#CEDCFF];
+  }
+}
+
+@layer utilities {
+  .glance-border {
+    box-shadow: 0px 0px 13.5px 0px rgba(255, 255, 255, 0.31) inset;
+  }
+
+  .violet-gradient {
+    background: linear-gradient(90deg, #326cff 0%, #9b26ef 100%);
+  }
+
+  .orange-gradient {
+    background: linear-gradient(90deg, #e26f36 0%, #f22626 100%);
+  }
+
+  .pink-gradient {
+    background: linear-gradient(89.35deg, #d500ff 0%, #f22835 100%);
+  }
+
+  .green-gradient {
+    background: linear-gradient(90deg, #bbbe0e 0%, #49ad25 100%);
+  }
+}
