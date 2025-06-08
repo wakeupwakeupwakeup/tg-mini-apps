@@ -15,15 +15,9 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   vite: {
     plugins: [tailwindcss()],
-  },
-  eslint: {
-    config: {
-      stylistic: {
-        indent: "tab",
-        semi: true,
-        quotes: "double",
-      },
-    },
+    server: {
+      allowedHosts: ["igra.top"]
+    }
   },
   svgo: {
     defaultImport: "component",
