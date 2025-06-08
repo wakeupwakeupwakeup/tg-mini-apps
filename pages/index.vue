@@ -29,8 +29,8 @@
         <p class="text-xs">Victory condition</p>
       </div>
       <div class="gap-6 grid grid-cols-2">
-        <UIButton label="Start X5" class="violet-gradient" />
-        <UIButton label="Start X6" class="orange-gradient" />
+        <UIButton label="Start X5" variant="violet" @click="navigateTo('/games/dots-and-boxes')" />
+        <UIButton label="Start X6" variant="orange" @click="navigateTo('/games/dots-and-boxes')" />
       </div>
     </UICard>
     <UICard class="flex flex-col gap-4">
@@ -39,7 +39,7 @@
         <p class="text-xs">Enter the field size</p>
       </div>
       <UISlider />
-      <UIButton label="Start" class="text-[#282C34] pink-gradient" />
+      <UIButton label="Start" variant="pink" />
     </UICard>
     <UICard class="flex flex-col gap-4">
       <div class="flex flex-col text-center">
@@ -60,7 +60,7 @@
           <span class="text-xs">~ 900 cells</span>
         </div>
       </div>
-      <UIButton label="Start" class="text-[#282C34] green-gradient" />
+      <UIButton label="Start" variant="green" />
     </UICard>
   </div>
 </template>
