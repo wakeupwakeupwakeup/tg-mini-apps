@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { requestFullscreen } from "@telegram-apps/sdk-vue";
+import {
+	mountViewport,
+	requestFullscreen,
+	unmountViewport,
+	viewportMountError,
+} from "@telegram-apps/sdk-vue";
 
 // import { init } from "@telegram-apps/sdk-vue";
 
@@ -18,7 +23,19 @@ import { requestFullscreen } from "@telegram-apps/sdk-vue";
 //     return navigateTo("/wrong-environment");
 //   }
 // })
-await requestFullscreen();
+tryOnMounted(async () => {
+	if (mountViewport.isAvailable()) {
+		try {
+			await mountViewport();
+			await requestFullscreen();
+		} catch {
+			viewportMountError();
+		}
+	}
+});
+tryOnUnmounted(() => {
+	unmountViewport();
+});
 </script>
 
 <template>
