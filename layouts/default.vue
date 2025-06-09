@@ -6,7 +6,7 @@ const { top } = useScreenSafeArea();
 	<div class="flex flex-col h-full">
 		<header
 			class="flex justify-center items-center"
-			:style="{ paddingTop: top + 'px' }"
+			:style="{ paddingTop: `calc(${top} + 16px)` }"
 		>
 			<NuxtImg src="/images/logo.svg" alt="logo" width="96" height="28" />
 		</header>
