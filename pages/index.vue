@@ -1,7 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+definePageMeta({
+	layout: "user",
+});
+</script>
 
 <template>
-	<div class="flex flex-col gap-6">
+	<div class="flex flex-col gap-2">
 		<h1 class="text-xl text-center">Playing with a friend</h1>
 		<UICard class="flex flex-col gap-2">
 			<div class="flex flex-col text-center">

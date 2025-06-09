@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { top, bottom } = useScreenSafeArea();
+const { top } = useScreenSafeArea();
 </script>
 
 <template>
@@ -11,39 +11,7 @@ const { top, bottom } = useScreenSafeArea();
 			<NuxtImg src="/images/logo.svg" alt="logo" width="96" height="28" />
 		</header>
 		<main class="flex flex-col gap-6 mt-6 pb-2 h-full overflow-y-auto">
-			<UICard class="flex gap-4">
-				<NuxtImg
-					src="/images/avatar.jpg"
-					width="64"
-					height="64"
-					class="rounded-md"
-				/>
-				<div class="flex flex-col flex-1 justify-between">
-					<div class="flex justify-between items-center">
-						<span>John Doe</span>
-						<span class="inline-flex items-center gap-1.5"
-							><SvgoTgStar class="w-5 h-5" />Stars: 150</span
-						>
-					</div>
-					<div class="flex justify-between items-center">
-						<span>Total games: 24</span>
-						<span>Wins: 12</span>
-					</div>
-				</div>
-			</UICard>
 			<slot />
 		</main>
-		<nav
-			class="z-20 flex justify-between px-8 pt-4 glance-border-top"
-			:style="{
-				paddingBottom: `calc(${bottom} + 16px)`,
-			}"
-		>
-			<UINavButton to="/" />
-			<UINavButton to="/" />
-			<UINavButton to="/" />
-			<UINavButton to="/" />
-			<DonationModal />
-		</nav>
 	</div>
 </template>

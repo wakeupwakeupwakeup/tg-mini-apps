@@ -13,8 +13,10 @@
 		"@nuxt/eslint": "1.4.1",
 		"@nuxt/image": "1.10.0",
 		"@tailwindcss/vite": "^4.1.8",
+		"@telegram-apps/bridge": "^2.8.3",
 		"@telegram-apps/sdk-vue": "^2.0.24",
 		"nuxt": "^3.17.5",
+		"pinia": "^3.0.3",
 		"tailwindcss": "^4.1.8",
 		"vue": "^3.5.16",
 		"vue-router": "^4.5.1"
