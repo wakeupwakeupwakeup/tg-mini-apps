@@ -13,6 +13,16 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   compatibilityDate: "2025-05-15",
+  app: {
+    head: {
+      meta: [
+        {
+          name: "viewport",
+          content: "initial-scale=1, viewport-fit=cover"
+        }
+      ]
+    }
+  },
   vite: {
     plugins: [tailwindcss()],
     server: {
