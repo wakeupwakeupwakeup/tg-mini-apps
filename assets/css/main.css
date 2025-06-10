@@ -7,7 +7,7 @@
 		@apply h-full;
 	}
 	body {
-		@apply bg-[#282C34] mx-auto px-4 max-w-md font-sans text-[#CEDCFF];
+		@apply mx-auto px-4 max-w-md font-sans;
 	}
 }
 

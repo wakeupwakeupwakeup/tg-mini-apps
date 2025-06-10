@@ -1,7 +1,10 @@
 export default defineNuxtPlugin(() => {
 	const accessToken = useCookie("accessToken");
-
+	const {
+		public: { env },
+	} = useRuntimeConfig();
 	const api = $fetch.create({
+		baseURL: env === "dev" ? "http://localhost:8080" : undefined,
 		onRequest({ options }) {
 			if (accessToken) {
 				options.headers.set("Authorization", `Bearer ${accessToken.value}`);

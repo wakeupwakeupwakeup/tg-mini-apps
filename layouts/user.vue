@@ -28,3 +28,9 @@ const { top, bottom } = useScreenSafeArea();
 		</nav>
 	</div>
 </template>
+
+<style>
+body {
+	@apply bg-[#282C34] text-[#CEDCFF];
+}
+</style>

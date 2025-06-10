@@ -14,6 +14,9 @@ export default defineNuxtRouteMiddleware(async (to) => {
 	}
 
 	if (!auth && to.path !== "/unathorized") {
-		return navigateTo("/unathorized");
+		throw createError({
+			statusCode: 401,
+			statusMessage: "Error while authenticating",
+		});
 	}
 });
