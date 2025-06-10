@@ -1,20 +1,20 @@
 export default defineNuxtPlugin(() => {
-	const accessToken = useCookie("accessToken");
 	const {
 		public: { env },
 	} = useRuntimeConfig();
+
 	const api = $fetch.create({
-		baseURL: env === "dev" ? "https://igra.top/api" : "/api",
-		onRequest({ options }) {
-			if (accessToken) {
-				options.headers.set("Authorization", `Bearer ${accessToken.value}`);
+		baseURL: env === "dev" ? "http://localhost:8080" : "/api",
+		credentials: "include",
+		onResponse({ response }) {
+			if (response?.status === 401) {
+				throw createError({
+					statusCode: 401,
+					statusMessage: "Unauthorized",
+					fatal: true,
+				});
 			}
 		},
-		// async onResponseError({ response }) {
-		// 	if (response.status === 401) {
-		// 		await nuxtApp.runWithContext(() => navigateTo("/login"));
-		// 	}
-		// },
 	});
 
 	return {

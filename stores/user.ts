@@ -8,8 +8,10 @@ export const useUserStore = defineStore("User", () => {
 		username.value = name;
 	}
 
-	function setBalance(newBalance: number) {
-		balance.value = newBalance;
+	const { $api } = useNuxtApp();
+
+	async function fetchBalance() {
+		balance.value = await $api<number>("/user/balance");
 	}
 
 	async function authenticate(newAccessToken: string, newRefreshToken: string) {
@@ -21,7 +23,7 @@ export const useUserStore = defineStore("User", () => {
 		username,
 		balance,
 		setUsername,
-		setBalance,
+		fetchBalance,
 		accessToken,
 		refreshToken,
 		authenticate,
