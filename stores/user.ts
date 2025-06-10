@@ -1,11 +1,16 @@
 export const useUserStore = defineStore("User", () => {
 	const username = ref("unknown");
 	const balance = ref(0);
+	const avatar = ref<string | null>(null);
 	const accessToken = ref<string | null>(null);
 	const refreshToken = ref<string | null>(null);
 
-	function setUsername(name: string) {
-		username.value = name;
+	function setUsername(name?: string) {
+		if (name) username.value = name;
+	}
+
+	function setAvatar(url?: string) {
+		if (url) avatar.value = url;
 	}
 
 	const { $api } = useNuxtApp();
@@ -22,7 +27,9 @@ export const useUserStore = defineStore("User", () => {
 	return {
 		username,
 		balance,
+		avatar,
 		setUsername,
+		setAvatar,
 		fetchBalance,
 		accessToken,
 		refreshToken,

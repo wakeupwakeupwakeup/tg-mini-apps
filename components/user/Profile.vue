@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 const userStore = useUserStore();
-const { username, balance } = storeToRefs(userStore);
+const { username, balance, avatar } = storeToRefs(userStore);
 </script>
 
 <template>
 	<UICard class="flex gap-4">
 		<NuxtImg
-			src="/images/avatar.jpg"
+			:src="avatar ?? '/images/avatar.jpg'"
 			width="64"
 			height="64"
 			class="rounded-md"

@@ -17,11 +17,13 @@ tryOnMounted(async () => {
 		acceptCustomStyles: false,
 	});
 	const { tgWebAppData } = retrieveLaunchParams();
+	const userStore = useUserStore();
 
-	if (tgWebAppData && tgWebAppData.user && tgWebAppData.user.username) {
-		useUserStore().setUsername(tgWebAppData.user.username);
-		await useUserStore().fetchBalance();
+	if (tgWebAppData && tgWebAppData.user) {
+		userStore.setUsername(tgWebAppData.user.username);
+		userStore.setAvatar(tgWebAppData.user.photo_url);
 	}
+	await userStore.fetchBalance();
 
 	if (mountViewport.isAvailable()) {
 		try {
