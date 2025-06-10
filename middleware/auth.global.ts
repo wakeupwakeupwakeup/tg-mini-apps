@@ -1,6 +1,6 @@
 import { useAuth } from "~/composables/useAuth";
 
-export default defineNuxtRouteMiddleware(async (to) => {
+export default defineNuxtRouteMiddleware(async () => {
 	const auth = await useAuth();
 
 	const {
@@ -9,11 +9,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
 	if (env === "dev") return;
 
-	if (auth && to.path === "/unathorized") {
-		return navigateTo("/");
-	}
-
-	if (!auth && to.path !== "/unathorized") {
+	if (!auth) {
 		throw createError({
 			statusCode: 401,
 			statusMessage: "Error while authenticating",
