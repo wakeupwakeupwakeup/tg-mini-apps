@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const userStore = useUserStore();
-const { username, balance, avatar } = storeToRefs(userStore);
+const { username, balance, avatar, gamesStats } = storeToRefs(userStore);
 </script>
 
 <template>
@@ -19,8 +19,8 @@ const { username, balance, avatar } = storeToRefs(userStore);
 				>
 			</div>
 			<div class="flex justify-between items-center">
-				<span>Total games: 24</span>
-				<span>Wins: 12</span>
+				<span>Total games: {{ gamesStats.totalGames }}</span>
+				<span>Wins: {{ gamesStats.totalWins }}</span>
 			</div>
 		</div>
 	</UICard>

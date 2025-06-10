@@ -1,24 +1,12 @@
-import { retrieveRawInitData } from "@telegram-apps/sdk-vue";
-
-export const useAuth = async () => {
-	const userStore = useUserStore();
+export const useAuth = async (initDataRaw: string) => {
 	const { $api } = useNuxtApp();
+	console.log("call");
 
-	if (!userStore.accessToken) {
-		const initDataRaw = retrieveRawInitData();
-		try {
-			const { accessToken, refreshToken } = await $api<{
-				accessToken: string;
-				refreshToken: string;
-			}>("/auth", {
-				method: "POST",
-				body: { initData: initDataRaw },
-			});
-			userStore.authenticate(accessToken, refreshToken);
-			return true;
-		} catch (error) {
-			console.error(error);
-			return false;
-		}
-	}
+	await $api<{
+		accessToken: string;
+		refreshToken: string;
+	}>("/auth", {
+		method: "POST",
+		body: { initData: initDataRaw },
+	});
 };

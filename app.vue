@@ -3,6 +3,7 @@ import {
 	init,
 	isTMA,
 	mountViewport,
+	retrieveRawInitData,
 	requestFullscreen,
 	retrieveLaunchParams,
 	swipeBehavior,
@@ -19,11 +20,30 @@ tryOnMounted(async () => {
 	const { tgWebAppData } = retrieveLaunchParams();
 	const userStore = useUserStore();
 
+	const initDataRaw = retrieveRawInitData();
+
+	if (initDataRaw) {
+		try {
+			await useAuth(initDataRaw);
+		} catch (error) {
+			console.error(error);
+			throw createError({
+				statusCode: 401,
+				statusMessage: "Unauthorized",
+			});
+		}
+	} else {
+		throw createError({
+			statusCode: 401,
+			statusMessage: "Unauthorized",
+		});
+	}
 	if (tgWebAppData && tgWebAppData.user) {
 		userStore.setUsername(tgWebAppData.user.username);
 		userStore.setAvatar(tgWebAppData.user.photo_url);
 	}
 	await userStore.fetchBalance();
+	await userStore.fetchGamesStats();
 
 	if (mountViewport.isAvailable()) {
 		try {

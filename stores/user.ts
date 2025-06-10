@@ -2,8 +2,13 @@ export const useUserStore = defineStore("User", () => {
 	const username = ref("unknown");
 	const balance = ref(0);
 	const avatar = ref<string | null>(null);
-	const accessToken = ref<string | null>(null);
-	const refreshToken = ref<string | null>(null);
+	const gamesStats = ref<{
+		totalGames: number;
+		totalWins: number;
+	}>({
+		totalGames: 0,
+		totalWins: 0,
+	});
 
 	function setUsername(name?: string) {
 		if (name) username.value = name;
@@ -19,20 +24,21 @@ export const useUserStore = defineStore("User", () => {
 		balance.value = await $api<number>("/user/balance");
 	}
 
-	async function authenticate(newAccessToken: string, newRefreshToken: string) {
-		accessToken.value = newAccessToken;
-		refreshToken.value = newRefreshToken;
+	async function fetchGamesStats() {
+		gamesStats.value = await $api<{
+			totalGames: number;
+			totalWins: number;
+		}>("/user/games-stats");
 	}
 
 	return {
 		username,
 		balance,
 		avatar,
+		gamesStats,
 		setUsername,
 		setAvatar,
 		fetchBalance,
-		accessToken,
-		refreshToken,
-		authenticate,
+		fetchGamesStats,
 	};
 });

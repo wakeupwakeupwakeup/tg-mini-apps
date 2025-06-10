@@ -32,6 +32,8 @@ export default defineNuxtPlugin(async () => {
 							id: 1,
 							first_name: "Visa",
 							username: "visaviceversa",
+							photo_url:
+								"https://t.me/i/userpic/320/WUANByYGvTFrH7KzzOs1q4e8_RR7dxZmuhvZZtTSVCc.svg",
 						}),
 					],
 					["hash", ""],
