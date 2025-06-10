@@ -10,7 +10,7 @@ export const useAuth = async () => {
 			const { accessToken, refreshToken } = await $api<{
 				accessToken: string;
 				refreshToken: string;
-			}>("/api/auth", {
+			}>("/auth", {
 				method: "POST",
 				body: { initData: initDataRaw },
 			});

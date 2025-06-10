@@ -4,7 +4,7 @@ export default defineNuxtPlugin(() => {
 		public: { env },
 	} = useRuntimeConfig();
 	const api = $fetch.create({
-		baseURL: env === "dev" ? "http://localhost:8080" : undefined,
+		baseURL: env === "dev" ? "https://igra.top/api" : "/api",
 		onRequest({ options }) {
 			if (accessToken) {
 				options.headers.set("Authorization", `Bearer ${accessToken.value}`);

@@ -47,14 +47,27 @@ tryOnMounted(async () => {
 					[
 						"user",
 						JSON.stringify({
-							id: 1,
-							first_name: "Pavel",
-							username: "Visa",
+							allows_write_to_pm: true,
+							first_name: "Visa",
+							id: 847390667,
+							last_name: "",
+							language_code: "ru",
+							photo_url:
+								"https://t.me/i/userpic/320/WUANByYGvTFrH7KzzOs1q4e8_RR7dxZmuhvZZtTSVCc.svg",
+							username: "visaviceversa",
 						}),
 					],
-					["hash", ""],
-					["signature", ""],
-					["auth_date", Date.now().toString()],
+					[
+						"hash",
+						"f6446118b5adae119725ee086dff07947277ae2387ce76f4a2c4bdd0b0750514",
+					],
+					[
+						"signature",
+						"32v8OnZKIAodp8zUge8XzU3pkTmh06qq6s9vJyBCuP0eZuZGVJtzMvMtQm45hPJitP4F-DnfGfiKZjLUh7afBA",
+					],
+					["auth_date", "2025-06-10T14:54:43.000Z"],
+					["chat_type", "private"],
+					["chat_instance", "8938812829086932503"],
 				]),
 				tgWebAppStartParam: "debug",
 				tgWebAppVersion: "8",
