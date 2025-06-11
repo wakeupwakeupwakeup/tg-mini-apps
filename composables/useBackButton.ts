@@ -2,7 +2,7 @@ import {
 	backButton,
 	mountBackButton,
 	showBackButton,
-	unmountBackButton,
+	hideBackButton,
 	onBackButtonClick,
 } from "@telegram-apps/sdk-vue";
 
@@ -18,7 +18,7 @@ export function useBackButton(onClick: () => void) {
 
 	tryOnUnmounted(() => {
 		if (backButton.isMounted()) {
-			unmountBackButton();
+			hideBackButton();
 		}
 	});
 
