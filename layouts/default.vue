@@ -7,7 +7,7 @@
 	</div>
 </template>
 
-<style>
+<style scoped>
 body {
 	@apply bg-[#282C34] text-[#CEDCFF];
 }

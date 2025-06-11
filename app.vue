@@ -14,9 +14,19 @@ import {
 
 tryOnMounted(async () => {
 	if (!isTMA()) navigateTo("/wrong-environment");
-	init({
-		acceptCustomStyles: false,
-	});
+	try {
+		init({
+			acceptCustomStyles: false,
+		});
+		console.log("SDK initialized");
+	} catch (error) {
+		console.error(error);
+		throw createError({
+			statusCode: 500,
+			statusMessage: "Error initializing SDK",
+		});
+	}
+
 	const { tgWebAppData } = retrieveLaunchParams();
 	const userStore = useUserStore();
 

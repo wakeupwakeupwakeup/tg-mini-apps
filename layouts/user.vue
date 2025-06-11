@@ -3,7 +3,7 @@ const { top, bottom } = useScreenSafeArea();
 </script>
 
 <template>
-	<div class="relative flex flex-col gap-6 h-full max-h-screen">
+	<div class="relative flex flex-col gap-6 px-4 h-full max-h-screen">
 		<header
 			class="z-20 flex justify-center items-center"
 			:style="{ paddingTop: `calc(${top} + 16px)` }"

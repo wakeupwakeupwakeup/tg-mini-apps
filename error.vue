@@ -17,7 +17,7 @@ defineProps({
 	</div>
 </template>
 
-<style>
+<style scoped>
 body {
 	@apply bg-[#BEC1C7] text-[#462D28];
 }

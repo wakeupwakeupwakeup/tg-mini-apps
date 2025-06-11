@@ -7,7 +7,7 @@
 		@apply h-full;
 	}
 	body {
-		@apply mx-auto px-4 max-w-md font-sans;
+		@apply mx-auto max-w-md font-sans;
 	}
 }
 
