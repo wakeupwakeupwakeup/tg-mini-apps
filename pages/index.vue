@@ -1,7 +1,13 @@
 <script lang="ts" setup>
+import { switchInlineQuery } from "@telegram-apps/sdk-vue";
+
 definePageMeta({
 	layout: "user",
 });
+
+function handleCreateGame() {
+	switchInlineQuery("xo");
+}
 </script>
 
 <template>
@@ -13,16 +19,8 @@ definePageMeta({
 				<p class="text-xs">Victory condition</p>
 			</div>
 			<div class="gap-6 grid grid-cols-2">
-				<UIButton
-					label="Start X5"
-					variant="violet"
-					@click="navigateTo('/games/xo')"
-				/>
-				<UIButton
-					label="Start X6"
-					variant="orange"
-					@click="navigateTo('/games/xo')"
-				/>
+				<UIButton label="Start X5" variant="violet" @click="handleCreateGame" />
+				<UIButton label="Start X6" variant="orange" @click="handleCreateGame" />
 			</div>
 		</UICard>
 		<UICard class="flex flex-col gap-4">
