@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			env: process.env.env,
+			botUrl: process.env.BOT_URL,
 		},
 	},
 	vite: {

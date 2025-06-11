@@ -13,7 +13,7 @@ const { username, balance, avatar, gamesStats } = storeToRefs(userStore);
 		/>
 		<div class="flex flex-col flex-1 justify-between">
 			<div class="flex justify-between items-center">
-				<span class="font-bold text-lg">{{ username }}</span>
+				<span class="font-bold text-lg">{{ username ?? "unknown" }}</span>
 				<span class="inline-flex items-center gap-1.5"
 					><SvgoTgStar class="w-5 h-5" />Stars: {{ balance }}</span
 				>

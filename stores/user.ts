@@ -1,5 +1,5 @@
 export const useUserStore = defineStore("User", () => {
-	const username = ref("unknown");
+	const username = ref<string | null>(null);
 	const balance = ref(0);
 	const avatar = ref<string | null>(null);
 	const gamesStats = ref<{
