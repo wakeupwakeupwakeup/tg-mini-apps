@@ -30,7 +30,6 @@ interface GameState {
 	winLine: WinLine | null;
 }
 
-const socket = io("http://localhost:8080");
 const squares = ref<SquareData[]>([]);
 const lines = ref<LineData[]>([]);
 const currentPlayer = ref<"cross" | "circle">("cross");
@@ -38,16 +37,29 @@ const winLine = ref<WinLine | null>(null);
 const showWinLine = ref(false);
 const roomId = ref<string | null>(null);
 
+const socket = io("http://localhost:8080");
+
+socket.on("connect", () => {
+	console.log("✅ Connected!", socket.id);
+});
+
+socket.on("connect_error", (error) => {
+	console.log("🚫 Connection error:", error);
+});
+
+socket.on("disconnect", (reason) => {
+	console.log("❌ Disconnected:", reason);
+});
+
 // Подключение к игре
 const joinGame = (gameRoomId: string) => {
 	roomId.value = gameRoomId;
-	socket.emit("joinGame", gameRoomId);
-};
+	console.log("🎮 Sending joinGame for room:", gameRoomId);
 
-// Обработка событий от сервера
-socket.on("connect", () => {
-	console.log("connected");
-});
+	socket.emit("joinGame", gameRoomId, (response: unknown) => {
+		console.log("📥 joinGame response:", response);
+	});
+};
 
 socket.on("gameStarted", (gameState: GameState) => {
 	squares.value = gameState.squares;
