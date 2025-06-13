@@ -44,6 +44,13 @@ const joinGame = (gameRoomId: string) => {
 	socket.emit("joinGame", gameRoomId);
 };
 
+watchImmediate(
+	() => socket.connected,
+	(connected) => {
+		console.log(connected);
+	},
+);
+
 // Обработка событий от сервера
 socket.on("connect", () => {
 	console.log("connected");
