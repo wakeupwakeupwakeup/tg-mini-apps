@@ -30,7 +30,7 @@ interface GameState {
 	winLine: WinLine | null;
 }
 
-const socket = io("/");
+const socket = io("/api");
 const squares = ref<SquareData[]>([]);
 const lines = ref<LineData[]>([]);
 const currentPlayer = ref<"cross" | "circle">("cross");
