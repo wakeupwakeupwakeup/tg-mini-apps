@@ -35,7 +35,7 @@ const lines = ref<LineData[]>([]);
 const currentPlayer = ref<"cross" | "circle">("cross");
 const winLine = ref<WinLine | null>(null);
 const showWinLine = ref(false);
-const roomId = ref<string | null>(null);
+// const roomId = ref<string | null>(null);
 
 const socket = io("http://localhost:8080");
 
@@ -51,9 +51,11 @@ socket.on("disconnect", (reason) => {
 	console.log("❌ Disconnected:", reason);
 });
 
+const roomId = useId();
+
 // Подключение к игре
 const joinGame = (gameRoomId: string) => {
-	roomId.value = gameRoomId;
+	// roomId.value = gameRoomId;
 	console.log("🎮 Sending joinGame for room:", gameRoomId);
 
 	socket.emit("joinGame", gameRoomId, (response: unknown) => {
@@ -79,10 +81,10 @@ socket.on("gameStateUpdate", (gameState: GameState) => {
 
 // Обработчик клика по квадрату
 const handleSquareClick = (position: Position) => {
-	if (winLine.value || !roomId.value) return;
+	if (winLine.value || !roomId) return;
 
 	socket.emit("makeMove", {
-		roomId: roomId.value,
+		roomId: roomId,
 		move: {
 			position,
 			player: currentPlayer.value,
@@ -92,7 +94,7 @@ const handleSquareClick = (position: Position) => {
 
 // Инициализация
 onMounted(() => {
-	const gameRoomId = "default-room";
+	const gameRoomId = roomId;
 	joinGame(gameRoomId);
 	window.addEventListener("resize", updateWindowSize);
 });
