@@ -1,6 +1,5 @@
 export const useAuth = async (initDataRaw: string) => {
 	const { $api } = useNuxtApp();
-	console.log("call");
 
 	await $api<{
 		accessToken: string;

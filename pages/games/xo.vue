@@ -44,13 +44,6 @@ const joinGame = (gameRoomId: string) => {
 	socket.emit("joinGame", gameRoomId);
 };
 
-watchImmediate(
-	() => socket.connected,
-	(connected) => {
-		console.log(connected);
-	},
-);
-
 // Обработка событий от сервера
 socket.on("connect", () => {
 	console.log("connected");
@@ -87,8 +80,7 @@ const handleSquareClick = (position: Position) => {
 
 // Инициализация
 onMounted(() => {
-	const gameRoomId =
-		window.location.pathname.split("/").pop() || "default-room";
+	const gameRoomId = "default-room";
 	joinGame(gameRoomId);
 	window.addEventListener("resize", updateWindowSize);
 });
